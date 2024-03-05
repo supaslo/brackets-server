@@ -9,22 +9,14 @@ servers:
   - url: http://staging-api.example.com
     description: Test Server
 paths:
-  /brackets/{id}:
+  /brackets:
     get:
       tags:
         - Brackets
-      summary: Gets a bracket by ID.
+      summary: Gets all brackets.
       description: >
-        It grabs a spot in time bracket detail
-      operationId: getBracketById
-      parameters:
-        - name: id
-          in: path
-          description: Bracket ID
-          required: true
-          schema:
-            type: integer
-            format: int64
+        It grabs all available brackets
+      operationId: getBrackets
       responses:
         "200":
           description: Successful operation

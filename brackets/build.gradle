@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.2'
 	id 'io.spring.dependency-management' version '1.1.4'
+	id 'org.hidetake.swagger.generator' version '2.19.2'
 }
 
 group = 'com.overboardsb'
@@ -12,6 +13,7 @@ java {
 }
 
 configurations {
+	openApiGen
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
@@ -31,8 +33,22 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	runtimeOnly 'com.mysql:mysql-connector-j'
+	openApiGen 'org.openapitools:openapi-generator-cli:6.1.0'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+swaggerSources {
+	bracketsApi {
+		inputFile = file("$rootDir/oas/OAS-Brackets.yaml")
+		code {
+			language = 'java'
+			outputDir = file("$rootDir/src/main/java/com/overboardsb/bracket-api")
+			configFile = file("$rootDir/oas/OAS-Brackets-config-java.json")
+			configuration = configurations.openApiGen
+			dependsOn validation
+		}
+	}
 }
