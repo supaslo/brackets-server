@@ -1,21 +1,33 @@
 package com.overboardsb.brackets.services;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.overboardsb.brackets.model.Bracket;
-import com.overboardsb.brackets.model.Match;
-import com.overboardsb.brackets.model.Round;
-
-import lombok.RequiredArgsConstructor;
+import com.overboardsb.brackets.dao.repository.BracketRepository;
+import com.overboardsb.brackets.domain.entity.Bracket;
 
 @Service
-@RequiredArgsConstructor
 public class BracketService {
 
-    public Bracket getAllBrackets() {
-        
+    @Autowired
+	private BracketRepository bracketsRepository;
+
+    public Bracket getAllBrackets(Integer bracketId) {
+
         Bracket bracket = new Bracket();
-        Round[] rounds = new Round[4];
+        Optional<Bracket> dbBracket = bracketsRepository.findById(bracketId);
+        if (dbBracket.isPresent()) {
+            bracket = dbBracket.get();
+        }
+
+        /*String bracketName = brackets;
+        
+        System.out.println("test bracket: " + bracketName);*/
+
+        //Bracket bracket = new Bracket();
+        /*Round[] rounds = new Round[4];
         Match[] matches1 = new Match[4];
         Match[] matches2 = new Match[2];
         Match[] matches3 = new Match[1];
@@ -95,7 +107,7 @@ public class BracketService {
 
         bracket.setId(1);
         bracket.setBracketName("Wicked Rabbit Friday Tournament 2/26/2024");
-        bracket.setRounds(rounds);
+        bracket.setRounds(rounds);*/
 
         return bracket;
     }

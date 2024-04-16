@@ -1,25 +1,22 @@
 package com.overboardsb.brackets.model;
 
+import lombok.Data;
+
+@Data
 public class TeamRequest {
+    
+    private Integer matchId;
     
     private String name;
 
-    private String[] players;
+    private Integer firstPlayer;
 
-    public String getName() {
-        return name;
-    }
+    private Integer secondPlayer;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    private Integer thirdPlayer;
 
-    public String[] getPlayers() {
-        return players;
-    }
+    private Integer fourthPlayer;
 
-    public void setPlayers(String[] players) {
-        this.players = players;
-    }
+    private Integer fifthPlayer;
     
 }

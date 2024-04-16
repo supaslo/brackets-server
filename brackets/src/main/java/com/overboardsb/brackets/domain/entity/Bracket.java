@@ -1,4 +1,4 @@
-package com.overboardsb.brackets.repository.entity;
+package com.overboardsb.brackets.domain.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,15 +6,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Teams {
-    
+public class Bracket {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
-    
+
     private String name;
 
-    private String[] players;
+    private String[] rounds;
 
     public Integer getId() {
         return id;
@@ -32,12 +32,14 @@ public class Teams {
         this.name = name;
     }
 
-    public String[] getPlayers() {
-        return players;
+    public String[] getRounds() {
+        return rounds;
     }
 
-    public void setPlayers(String[] players) {
-        this.players = players;
+    public void setRounds(String[] rounds) {
+        this.rounds = rounds;
     }
+
+    
 
 }
