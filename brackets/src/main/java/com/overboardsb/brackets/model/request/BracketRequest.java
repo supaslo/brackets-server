@@ -1,4 +1,4 @@
-package com.overboardsb.brackets.model;
+package com.overboardsb.brackets.model.request;
 
 public class BracketRequest {
 

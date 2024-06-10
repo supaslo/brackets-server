@@ -16,12 +16,10 @@ public class Round {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private Integer bracketId;
+    private Integer displayId;
 
-    private Integer sequenceId;
+    private Boolean finalRound;
 
-    private Integer teamId;
-
-    private boolean finalRound;
+    private String roundCreated;
 
 }

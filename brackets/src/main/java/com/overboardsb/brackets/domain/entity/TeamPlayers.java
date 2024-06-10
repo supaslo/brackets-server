@@ -10,14 +10,24 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Team {
-    
+public class TeamPlayers {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
-    private String name;
+    private Integer teamId;
+
+    private Integer playerOneId;
+
+    private Integer playerTwoId;
+
+    private Integer playerThreeId;
+
+    private Integer playerFourId;
+
+    private Integer playerFiveId;
 
     private String teamCreated;
-
+    
 }

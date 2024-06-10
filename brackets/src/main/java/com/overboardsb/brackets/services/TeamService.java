@@ -1,18 +1,18 @@
 package com.overboardsb.brackets.services;
 
-import java.util.Date;
 import java.util.Optional;
+import java.util.Date;
+import java.util.List;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.overboardsb.brackets.dao.repository.PlayerTeamHistoryRepository;
 import com.overboardsb.brackets.dao.repository.TeamRepository;
-import com.overboardsb.brackets.domain.entity.PlayerTeamHistory;
 import com.overboardsb.brackets.domain.entity.Team;
-import com.overboardsb.brackets.model.TeamRequest;
+import com.overboardsb.brackets.domain.entity.TeamPlayers;
+import com.overboardsb.brackets.model.request.TeamRequest;
 
 @Service
 public class TeamService {
@@ -20,12 +20,13 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
 
-    @Autowired
-    private PlayerTeamHistoryRepository playerTeamHistoryRepository;
-
     public Team getTeamById(Integer teamId) {
 
         Team team = new Team();
+        if (teamId == null) {
+            teamId = 0;
+            team.setName("");
+        }
         Optional<Team> dbTeam = teamRepository.findById(teamId);
         if (dbTeam.isPresent()) {
             team = dbTeam.get();
@@ -34,23 +35,37 @@ public class TeamService {
 
     }
 
-    public void createTeam(TeamRequest team) {
+    public List<Team> getAllTeams() {
 
-        Team newTeam = new Team();
-
-        newTeam.setName(team.getName());
-        newTeam.setPlayerOne(team.getFirstPlayer());
-        newTeam.setPlayerTwo(team.getSecondPlayer());
-        newTeam.setPlayerThree(team.getThirdPlayer());
-        newTeam.setPlayerFour(team.getFourthPlayer());
-        newTeam.setPlayerFive(team.getFifthPlayer());
+        List<Team> teams = teamRepository.findAll();
+        return teams;
         
-        Team savedTeam = teamRepository.save(newTeam);
+    }
+
+    public void createTeam(TeamRequest team) {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
 
-        PlayerTeamHistory playerTeamHistoryOne = new PlayerTeamHistory();
+        Team newTeam = new Team();
+
+        newTeam.setName(team.getName());
+        
+        Team savedTeam = teamRepository.save(newTeam);
+
+        TeamPlayers teamPlayers = new TeamPlayers();
+
+        teamPlayers.setTeamId(savedTeam.getId());
+        teamPlayers.setPlayerOneId(team.getPlayerOne());
+        teamPlayers.setPlayerTwoId(team.getPlayerTwo());
+        teamPlayers.setPlayerThreeId(team.getPlayerThree());
+        teamPlayers.setPlayerFourId(team.getPlayerFour());
+        teamPlayers.setPlayerFiveId(team.getPlayerFive());
+        teamPlayers.setTeamCreated(dateFormat.format(date));
+        
+        //teamPlayersRepository.save(teamPlayers);
+
+        /*PlayerTeamHistory playerTeamHistoryOne = new PlayerTeamHistory();
         playerTeamHistoryOne.setTeamId(savedTeam.getId());
         playerTeamHistoryOne.setPlayerId(team.getFirstPlayer());
         playerTeamHistoryOne.setTeamCreated(dateFormat.format(date));
@@ -79,10 +94,7 @@ public class TeamService {
         playerTeamHistoryFive.setTeamId(savedTeam.getId());
         playerTeamHistoryFive.setPlayerId(team.getFirstPlayer());
         playerTeamHistoryFive.setTeamCreated(dateFormat.format(date));
-        playerTeamHistoryRepository.save(playerTeamHistoryFive);
-
-
-        
+        playerTeamHistoryRepository.save(playerTeamHistoryFive);*/
 
     }
 

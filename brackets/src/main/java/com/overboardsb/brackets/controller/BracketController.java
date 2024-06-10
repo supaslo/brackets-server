@@ -1,6 +1,7 @@
 package com.overboardsb.brackets.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -9,10 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.overboardsb.brackets.model.BracketRequest;
 import com.overboardsb.brackets.services.BracketService;
-import com.overboardsb.brackets.dao.repository.BracketRepository;
-import com.overboardsb.brackets.domain.entity.Bracket;
+//import com.overboardsb.brackets.dao.repository.BracketRepository;
+//import com.overboardsb.brackets.domain.entity.Bracket;
+import com.overboardsb.brackets.model.request.BracketRequest;
+import com.overboardsb.brackets.model.request.BracketRoundsRequest;
+import com.overboardsb.brackets.model.response.BracketResponse;
+import com.overboardsb.brackets.model.response.BracketRoundsResponse;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,13 +28,19 @@ public class BracketController {
 	@Autowired
 	private BracketService bracketService;
 
-	@Autowired
-	private BracketRepository bracketRepository;
+	/*@Autowired
+	private BracketRepository bracketRepository;*/
 	
 	@GetMapping("/bracket/{bracketId}")
 	@CrossOrigin(origins = "http://localhost:3000")
-	public Bracket getBracketByBracketId(@NonNull @PathVariable("bracketId") Integer bracketId) throws SQLException {
-		return bracketService.getAllBrackets(bracketId);
+	public BracketResponse getBracketByBracketId(@NonNull @PathVariable("bracketId") Integer bracketId) throws SQLException {
+		return bracketService.getBracketById(bracketId);
+	}
+
+	/*@GetMapping("/rounds/{bracketId}")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public ArrayList<BracketRoundsResponse> getRoundsByBracketId(@NonNull @PathVariable("bracketId") Integer bracketId) throws SQLException {
+		return bracketService.getAllRoundsForBracket(bracketId);
 	}
 
 	@PostMapping("/bracket")
@@ -43,5 +53,13 @@ public class BracketController {
 		
 		return "Update successful";
 	}
+
+	@PostMapping("/bracketRounds")
+	@CrossOrigin(origins = "http://localhost:3000")
+	public String postBracketRounds(@RequestBody BracketRoundsRequest entity) {
+
+		bracketService.createBracketRounds(entity);
+		return "Update successful";
+	}*/
 	
 }

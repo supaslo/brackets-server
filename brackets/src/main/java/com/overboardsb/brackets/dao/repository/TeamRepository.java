@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.overboardsb.brackets.domain.entity.Team;
 
+
 @Repository
 public interface TeamRepository extends JpaRepository<Team, Integer> {
+
     
 }

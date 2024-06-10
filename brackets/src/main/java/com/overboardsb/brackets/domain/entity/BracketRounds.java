@@ -10,16 +10,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class PlayerTeamHistory {
+public class BracketRounds {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
-    private Integer playerId;
+    private Integer bracketId;
 
-    private Integer teamId;
+    private Integer roundId;
 
-    private String teamCreated;
-    
 }

@@ -10,14 +10,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Team {
-    
+public class RoundMatches {
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+
+    private Integer roundId;
+
+    private Integer matchId;
     
-    private String name;
-
-    private String teamCreated;
-
 }
