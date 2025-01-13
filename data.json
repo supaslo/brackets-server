@@ -1,0 +1,23 @@
+{
+    "name": "Wicked Rabbit",
+    "date": "2024-10-25T05:00:00.000Z",
+    "type": "lod",
+    "venue": "Wicked Rabbit",
+    "city": "Des Moines",
+    "state": "IA",
+    "photo": "/assets/dart-board.jpg",
+    "aPlayerList": [
+        "Matt",
+        "Rory",
+        "Andy",
+        "Ryan",
+        "Rian"
+    ],
+    "bPlayerList": [
+        "Dave",
+        "Misty",
+        "Linda",
+        "Kassie",
+        "Tabitha"
+    ]
+}

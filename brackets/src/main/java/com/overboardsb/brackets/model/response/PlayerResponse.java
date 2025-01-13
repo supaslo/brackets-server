@@ -1,9 +1,9 @@
-package com.overboardsb.brackets.model.request;
+package com.overboardsb.brackets.model.response;
 
 import lombok.Data;
 
 @Data
-public class PlayerRequest {
+public class PlayerResponse {
 
     private Integer id;
 
@@ -14,5 +14,5 @@ public class PlayerRequest {
     private String gender;
     
     private String level;
-
+    
 }

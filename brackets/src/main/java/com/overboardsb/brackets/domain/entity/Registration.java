@@ -10,18 +10,18 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Player {
+public class Registration {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
+
+    private Integer tournamentId;
+
+    private Integer playerId;
+
+    private String playerTournamentLevel;
+
+    private boolean paid;
     
-    private String firstname;
-
-    private String lastname;
-
-    private String gender;
-
-    private String level;
-
 }

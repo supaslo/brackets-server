@@ -1,7 +1,6 @@
 package com.overboardsb.brackets.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -11,16 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.overboardsb.brackets.services.BracketService;
-//import com.overboardsb.brackets.dao.repository.BracketRepository;
-//import com.overboardsb.brackets.domain.entity.Bracket;
-import com.overboardsb.brackets.model.request.BracketRequest;
-import com.overboardsb.brackets.model.request.BracketRoundsRequest;
 import com.overboardsb.brackets.model.response.BracketResponse;
-import com.overboardsb.brackets.model.response.BracketRoundsResponse;
-
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 public class BracketController {

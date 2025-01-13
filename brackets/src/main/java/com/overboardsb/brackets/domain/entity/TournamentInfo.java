@@ -1,5 +1,7 @@
 package com.overboardsb.brackets.domain.entity;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,18 +12,24 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Player {
+public class TournamentInfo {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     
-    private String firstname;
+    private String name;
 
-    private String lastname;
+    private Date date;
 
-    private String gender;
+    private String type;
 
-    private String level;
+    private String venue;
 
+    private String city;
+
+    private String state;
+
+    private String photo;
+    
 }
