@@ -2,9 +2,7 @@ package com.overboardsb.brackets.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.text.DateFormat;
 import java.util.Optional;
-import java.text.SimpleDateFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +17,6 @@ public class TournamentService {
 
     @Autowired
     private TournamentInfoRepository tournamentInfoRepository;
-
-    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
     public String deleteTournament(Integer tournamentId) {
 
