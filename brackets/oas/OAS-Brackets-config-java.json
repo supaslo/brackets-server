@@ -1,6 +1,0 @@
-{
-    "npmRepository": "http://art.nwie.net/artifactory/api/npm/npm",
-    "npmName": "@nationwide/brackets",
-    "npmVersion": "1.0.0",
-    "snapshot": false
-}
